@@ -7,13 +7,15 @@
 body {
   width: 100vw;
   overflow-x: hidden;
-  --dark: #222222;
-  --medium: #777777;
-  --light: #aaaaaa;
-  --accent: #123456;
-  --bcgcolor: #eeeeee;
-  font-family: ;
+  --dark: #1a1a1a;
+  --medium: #d9d9d9;
+  --light: #fafafa;
+  --accent: orange;
+  --bgcolor: #ffeee6;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
   color: var(--dark);
+  background-color: var(--light);
 }
 
 img {
@@ -31,8 +33,86 @@ a:link:active, a:visited:active {
 }
 
 /*======= TYPOGRAPHY ===========*/
+header, footer {
+  background-color: var(--dark);
+  padding: 1em;
+  color: white;
+  text-align: center;
+}
+
+footer {
+  font-size: 1rem;
+}
+
+footer a,
+h1 span {
+  color: var(--accent);
+}
+
 /*======= NAVIGATION ===========*/
 /*======= SECTION ===========*/
+main {
+  padding: 2em 0;
+}
+
+#equation {
+  width: 20rem;
+  text-align: right;
+  height: 3rem;
+  background-color: white;
+  margin: 0 auto;
+}
+
+#display {
+  width: 20rem;
+  font-size: 3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 6px 16px;
+  height: 6rem;
+  background-color: var(--dark);
+  margin: 0 auto;
+  color: var(--accent);
+}
+
+#memory, #buttons {
+  display: grid;
+  width: 20rem;
+  list-style: none;
+  margin: 0 auto;
+  grid-gap: 2px;
+}
+
+#memory {
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  height: 3rem;
+  margin-bottom: 2px;
+}
+
+#buttons {
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 14% 14% 18% 18% 18% 18%;
+  height: 30rem;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.button:hover {
+  background-color: var(--medium);
+  box-shadow: 5px 5px 25px rgba(0, 0, 0, .25);
+}
+
+.button-active {
+  background-color: var(--accent);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, .55);
+}
+
 /*======= SECTION ===========*/
 /*======= SECTION ===========*/
 /*======= SECTION ===========*/

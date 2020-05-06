@@ -1,7 +1,11 @@
-//document.addEventListener("scroll", alert("first test"))
-let calculation = 0;
-let x = "0";
+let calculation;
+let x = "";
 let display = document.getElementById("display");
+let equation = document.getElementById("equation")
+equation.textContent = calculation
+let calcType;
+let temp;
+let result;
 
 
 let key1 = document.getElementById('key1');
@@ -15,12 +19,16 @@ let key8 = document.getElementById('key8');
 let key9 = document.getElementById('key9');
 let key0 = document.getElementById('key0');
 let keyComa = document.getElementById('key-coma');
+let keyPlus = document.getElementById("key-plus")
+let keyEnter = document.getElementById('key-enter')
+//let key = document.getElementById('key')
 
+
+// ==== DEFINICJE FUNKCJI DO OBSŁUGI KALKULATORA =====
 
 function keyPressed(p) {
   let keyElement = p;
   keyElement.classList.add("button-active");
-
   function pressEffect() {
     keyElement.classList.toggle("button-active");
   }
@@ -32,7 +40,40 @@ function licz(k) {
   x += k;
   //console.log(x)
   display.textContent = x;
+  return x
 }
+
+
+
+function dodawanie() {
+  temp = parseInt(x);
+  x += " + ";
+  calculation = x;
+  equation.textContent += calculation;
+  x = "";
+  display.textContent = "0";
+  calcType = "dodawanie"
+}
+
+
+function enter() {
+    if (calcType == "dodawanie") {
+      console.log(temp)
+      xNr = parseInt(x)
+      console.log(xNr)
+      result = temp + xNr;
+      console.log("a jest równe " + temp + ", b jest równe " + xNr + ", a suma to: " + result)
+      display.textContent = result;
+      equation.textContent = calculation + x + " ="
+    } else {
+      console.log("nie tak")
+    }
+}
+
+
+
+
+// ===== EVENTS LISTENERS - CLICK AND KEYDOWN ========
 
 //DZIAŁANIE KLAWISZY Z CYFRAMI
 document.addEventListener("keydown", () => {
@@ -93,8 +134,15 @@ document.addEventListener("keydown", () => {
     case "Comma":
       licz(".");
       keyPressed(keyComa);
-      //console.log("coma is working");
       break;
+    case "NumpadAdd":
+      dodawanie();
+      keyPressed(keyPlus);
+    case "Equal":
+    case "Enter":
+    case "NumpadEnter":
+      enter();
+      keyPressed(keyEnter);
     default:
       console.log("Different key!")
   }
@@ -145,8 +193,11 @@ keyComa.addEventListener("click", () => {
   keyPressed(keyComa);
   licz(".")
 });
-//let key = document.getElementById('key')
-
-
-
-// ======== DODAWANIE ============
+keyPlus.addEventListener("click", () => {
+  dodawanie();
+  keyPressed(keyPlus);
+});
+keyEnter.addEventListener("click", () => {
+  enter();
+  keyPressed(keyEnter);
+})
